@@ -5,7 +5,8 @@
 # This script should be sourced from main_repo_wrapper/
 
 PROJECT_ROOT_DIR="Diplomska/Framework/Work"
-HASH_FILE="${PROJECT_ROOT_DIR}/manage_project/symrepo_commit_hashes.txt"
+MAIN_REPO_OUTERMOST_DIR="Diplomska"
+HASH_FILE="${MAIN_REPO_OUTERMOST_DIR}/symrepo_commit_hashes.txt"
 
 
 
@@ -14,7 +15,7 @@ echo "Capturing symrepo commit hashes..."
 
 # Ensure we're in the main_repo_wrapper directory
 # (the wrapper doesn't have to be called main_repo_wrapper, so we just check if the necessary directories are in place)
-if [[ ! -d "Diplomska" ]] || [[ ! -d "sysrun" ]] || [[ ! -d "python_logger" ]] || [[ ! -d "CNN_kernel_pruning" ]] || [[ ! -d "sysrun_wrapper" ]]; then
+if [[ ! -d "Diplomska" ]] || [[ ! -d "manage_symrepos" ]] || [[ ! -d "sysrun" ]] || [[ ! -d "python_logger" ]] || [[ ! -d "CNN_kernel_pruning" ]] || [[ ! -d "sysrun_python_logger" ]]; then
     echo 'Error: Required subdirectories are missing. Look at top of get_symrepo_commit_hashes.sh for more information.'
     return 1
 fi
@@ -55,6 +56,7 @@ get_repo_info() {
             )
         fi
         
+        popd > /dev/null
         
         # block writes to $HASH_FILE
         {
@@ -68,9 +70,8 @@ get_repo_info() {
                 echo "status = clean"
             fi
             echo ""
-        } >> "../$HASH_FILE"
+        } >> "$HASH_FILE"
 
-        popd > /dev/null
 
 
         if [[ -n "$dirty" ]]; then
@@ -85,9 +86,10 @@ get_repo_info() {
 }
 
 # Capture hashes for all symrepos
+get_repo_info "manage_symrepos" "manage_symrepos"
 get_repo_info "sysrun" "sysrun"
 get_repo_info "python_logger" "python_logger" 
-get_repo_info "sysrun_wrapper/python_logger" "python_logger"
+get_repo_info "sysrun_python_logger/python_logger" "python_logger"
 get_repo_info "CNN_kernel_pruning" "CNN_kernel_pruning"
 
 echo ""

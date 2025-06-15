@@ -40,7 +40,7 @@ fi
 
 
 # Simply do what second.sh already does
-source "${PROJECT_ROOT_DIR}/manage_projects/second.sh"
+source "${PROJECT_ROOT_DIR}/manage_project/second.sh"
 
 
-echo "For additional terminal tabs, use: source /manage_projects/second.sh"
+echo "For additional terminal tabs, use: source /manage_project/second.sh"

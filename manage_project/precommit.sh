@@ -18,7 +18,7 @@ fi
 
 
 echo "1. Capturing symrepo commit hashes..."
-source "${PROJECT_ROOT_DIR}/manage_projects/get_symrepo_commit_hashes.sh"
+source "${PROJECT_ROOT_DIR}/manage_project/get_symrepo_commit_hashes.sh"
 
 
 

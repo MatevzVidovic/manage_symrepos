@@ -8,14 +8,19 @@ So instead you make:
 main_repo_wrapper/
 ├── Diplomska/                    # Main repository (MAIN_REPO_OUTERMOST_DIR)
 │   ├── Framework/Work/           # Project root (PROJECT_ROOT_DIR)  
-│   ├── ├── manage_projects/      # This directory with scripts
+│   ├── ├── manage_project/      # This directory with scripts
+│   ├── ├── manage_subrepos       # symlink
 │   ├── ├── sysrun                # symlink
 │   ├── ├── python_logger         # symlink
 │   ├── ├── CNN_kernel_pruning    # symlink
 │   └── env.yml                   # Conda environment file
+├── manage_subrepos/               # Separate git repository (symrepo)
 ├── sysrun/                       # Separate git repository (symrepo)
 ├── python_logger/                # Separate git repository (symrepo)
 └── CNN_kernel_pruning/           # Separate git repository (symrepo)
+├── sysrun_python_logger/
+├── ├── python_logger/            # Separate git repo, used as a symrepo in sysrun/
+
 ```
 
 The symlinks are simply ignored by git, but they nicely work with code, which is awesome.
@@ -51,19 +56,19 @@ ln -s YOUR_PROJECT_ROOT ../../(as many .. to get to main_repo_wrapper/)/manage_s
 
 **Run from `main_repo_wrapper/` directory:**
 ```bash
-source Diplomska/Framework/Work/manage_projects/setup.sh     # First terminal tab you open
-source Diplomska/Framework/Work/manage_projects/second.sh    # Additional tabs  
-source Diplomska/Framework/Work/manage_projects/precommit.sh # Before committing
+source Diplomska/Framework/Work/manage_project/setup.sh     # First terminal tab you open
+source Diplomska/Framework/Work/manage_project/second.sh    # Additional tabs  
+source Diplomska/Framework/Work/manage_project/precommit.sh # Before committing
 ```
 
 **Or create symlink for convenience:**
 ```bash
-ln -s Diplomska/Framework/Work/manage_projects/
+ln -s Diplomska/Framework/Work/manage_project/    # symlink to symlink, works fine
 
 # Then use:
-source manage_projects/setup.sh
-source manage_projects/second.sh
-source manage_projects/precommit.sh
+source manage_project/setup.sh
+source manage_project/second.sh
+source manage_project/precommit.sh
 ```
 
 ## What Each Script Does

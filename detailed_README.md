@@ -8,7 +8,7 @@ This directory contains scripts for managing a project with symlinked submodules
 main_repo_wrapper/
 ├── Diplomska/                    # Main repository (MAIN_REPO_OUTERMOST_DIR)
 │   ├── Framework/Work/           # Project root (PROJECT_ROOT_DIR)  
-│   ├── manage_projects/          # This directory with scripts
+│   ├── manage_project/          # This directory with scripts
 │   ├── sysrun -> ../sysrun       # Symlink to sysrun repo
 │   ├── python_logger -> ../python_logger
 │   ├── CNN_kernel_pruning -> ../CNN_kernel_pruning
@@ -33,7 +33,7 @@ All scripts use these hardcoded variables at the top:
 All scripts should be **sourced** (not executed) from the `main_repo_wrapper/` directory.
 
 ### `setup.sh`
-**Usage**: `source Diplomska/manage_projects/setup.sh`
+**Usage**: `source Diplomska/manage_project/setup.sh`
 
 For the first terminal tab when opening the project.
 
@@ -43,7 +43,7 @@ For the first terminal tab when opening the project.
 - Navigates to the main repository root
 
 ### `second.sh`
-**Usage**: `source Diplomska/manage_projects/second.sh`
+**Usage**: `source Diplomska/manage_project/second.sh`
 
 For additional terminal tabs after the initial setup.
 
@@ -53,7 +53,7 @@ For additional terminal tabs after the initial setup.
 - Shows current git status
 
 ### `get_symrepo_commit_hashes.sh`
-**Usage**: `source Diplomska/manage_projects/get_symrepo_commit_hashes.sh`
+**Usage**: `source Diplomska/manage_project/get_symrepo_commit_hashes.sh`
 
 Captures the current state of all symlinked repositories.
 
@@ -63,7 +63,7 @@ Captures the current state of all symlinked repositories.
 - Helps track which versions of symrepos were used with each main repo commit
 
 ### `precommit.sh`
-**Usage**: `source Diplomska/manage_projects/precommit.sh`
+**Usage**: `source Diplomska/manage_project/precommit.sh`
 
 Run before committing changes and when closing the project.
 
@@ -78,14 +78,14 @@ Run before committing changes and when closing the project.
 ### Initial Setup
 1. Clone the main repository into `main_repo_wrapper/Diplomska/`
 2. Navigate to `main_repo_wrapper/`
-3. Run: `source Diplomska/manage_projects/setup.sh`
+3. Run: `source Diplomska/manage_project/setup.sh`
 
 ### Daily Workflow
 1. Open terminal, navigate to `main_repo_wrapper/`
-2. Run: `source Diplomska/manage_projects/setup.sh`
-3. For additional terminals: `source Diplomska/manage_projects/second.sh`
+2. Run: `source Diplomska/manage_project/setup.sh`
+3. For additional terminals: `source Diplomska/manage_project/second.sh`
 4. Do your work...
-5. Before committing: `source Diplomska/manage_projects/precommit.sh`
+5. Before committing: `source Diplomska/manage_project/precommit.sh`
 6. Review `symrepo_commit_hashes.txt` and commit normally
 
 ### Creating Convenience Symlinks
@@ -94,9 +94,9 @@ Create symlinks in `main_repo_wrapper/` for easier access:
 
 ```bash
 cd main_repo_wrapper/
-ln -sf Diplomska/manage_projects/setup.sh setup
-ln -sf Diplomska/manage_projects/second.sh second  
-ln -sf Diplomska/manage_projects/precommit.sh precommit
+ln -sf Diplomska/manage_project/setup.sh setup
+ln -sf Diplomska/manage_project/second.sh second  
+ln -sf Diplomska/manage_project/precommit.sh precommit
 ```
 
 Then simply run: `source setup`, `source second`, `source precommit`

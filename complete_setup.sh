@@ -119,5 +119,5 @@
 # echo ""
 # echo "Next steps:"
 # echo "- Update repository URLs in this script if needed"
-# echo "- Use 'source ../manage_projects/second.sh' for additional terminal tabs"
-# echo "- Use 'source ../manage_projects/precommit.sh' before committing"
+# echo "- Use 'source ../manage_project/second.sh' for additional terminal tabs"
+# echo "- Use 'source ../manage_project/precommit.sh' before committing"
